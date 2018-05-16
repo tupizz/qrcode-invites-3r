@@ -1,11 +1,24 @@
 <ion-header>
   <ion-navbar>
     <ion-title>
-      About
+      3R - Ingressos
     </ion-title>
   </ion-navbar>
 </ion-header>
 
-<ion-content padding>
+<ion-content class="card-background-page">
+  <h1> Ingressos </h1>
+  
+  <button ion-button round icon-left (click)="atualizar()">
+    <ion-icon name="qr-scanner"></ion-icon>
+    Scan Code
+  </button>
+  
+  <ion-card *ngFor="let ingresso of ingressos">
+      <img src="assets/imgs/especial_events.jpg"/>
+      <!-- <ngx-qrcode qrc-class="qrCode" [qrc-value]=ingresso.id></ngx-qrcode> -->
+      <div class="card-title">{{ingresso.nome}}</div>
+      <div class="card-subtitle">{{ingresso.entrou}}</div>
+  </ion-card>
 
 </ion-content>

@@ -1,17 +1,30 @@
 <ion-header>
   <ion-navbar>
-    <ion-title>Home</ion-title>
+    <ion-title>3R - Leitor Código </ion-title>
   </ion-navbar>
 </ion-header>
 
 <ion-content padding>
-  <h2>Welcome to Ionic!</h2>
-  <p>
-    This starter project comes with simple tabs-based layout for apps
-    that are going to primarily use a Tabbed UI.
-  </p>
-  <p>
-    Take a look at the <code>src/pages/</code> directory to add or change tabs,
-    update any existing page or create new pages.
-  </p>
+  <div class="imageHolder">
+    <ion-img  width="150" height="150" src="assets/imgs/qrcode.png"></ion-img>
+    <div class="paragrafoContainer">
+      <p>Utilize a câmara do seu celular para ler o QR Code referente ao ID do convite </p>
+    </div>
+  </div>
+
+ 
+
+  <button class="btnScanCode" large ion-button round icon-left (click)="scanCode()">
+    <ion-icon name="qr-scanner"></ion-icon>
+    Scan Code
+  </button>
+
+  <ion-card *ngIf="scannedCode">
+    <ngx-qrcode [qrc-value]="scannedCode"></ngx-qrcode>
+    <ion-card-content>
+      <p>{{scannedCode}}</p>
+    </ion-card-content>
+  </ion-card>
 </ion-content>
+
+

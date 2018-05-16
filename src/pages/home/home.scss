@@ -1,3 +1,26 @@
 page-home {
+    ion-content{
+        text-align: center;
+        
+            .imageHolder{
+                display: flex;
+                flex-direction: column;
+                
+        
+                ion-img{
+                   background-color: white;
+                   margin: auto;
+                }
+        
+                p{
+                    font-size: 1.4em;
+                }
+            }
+            
+            button.btnScanCode{
+                margin: 20px;
+            }
+    }
+    
 
 }
