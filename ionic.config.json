@@ -1,0 +1,8 @@
+{
+  "name": "qrcode-invites-3r",
+  "app_id": "cdc20fcb",
+  "type": "ionic-angular",
+  "integrations": {
+    "cordova": {}
+  }
+}
