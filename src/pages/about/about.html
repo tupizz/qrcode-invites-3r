@@ -7,18 +7,53 @@
 </ion-header>
 
 <ion-content class="card-background-page">
-  <h1> Ingressos </h1>
-  
-  <button ion-button round icon-left (click)="atualizar()">
-    <ion-icon name="qr-scanner"></ion-icon>
-    Scan Code
+  <button ion-button full icon-left (click)="atualizar()">
+    <ion-icon name="refresh"></ion-icon>
+    Atualizar
   </button>
   
+  <h1> Ingressos </h1>
+  
+  
   <ion-card *ngFor="let ingresso of ingressos">
-      <img src="assets/imgs/especial_events.jpg"/>
-      <!-- <ngx-qrcode qrc-class="qrCode" [qrc-value]=ingresso.id></ngx-qrcode> -->
-      <div class="card-title">{{ingresso.nome}}</div>
-      <div class="card-subtitle">{{ingresso.entrou}}</div>
-  </ion-card>
+      <div *ngIf="ingresso.entrou===true;then entrou else naoEntrou"></div>
+
+      <ng-template #entrou>
+
+          <ion-item class="entrouItem">
+              
+              <ion-avatar item-start>
+                <img src="https://api.adorable.io/avatars/63/abott@adorable.png">
+              </ion-avatar>
+              <h2>{{ingresso.nome}}</h2>
+              <p>Status: {{ingresso.entrou}}</p>
+              <ion-col right text-center>
+                <ion-note>
+                  11h ago
+                </ion-note>
+              </ion-col>
+            </ion-item>
+
+      </ng-template>
+      <ng-template #naoEntrou>
+        
+          <ion-item >
+              
+              <ion-avatar item-start>
+                <img src="https://api.adorable.io/avatars/63/abott@adorable.png">
+              </ion-avatar>
+              <h2>{{ingresso.nome}}</h2>
+              <p>Status: {{ingresso.entrou}}</p>
+              <ion-col right text-center>
+                <ion-note>
+                  11h ago
+                </ion-note>
+              </ion-col>
+            </ion-item>
+
+      </ng-template>
+          
+        
+    </ion-card>
 
 </ion-content>

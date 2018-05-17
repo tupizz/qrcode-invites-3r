@@ -1,6 +1,11 @@
 <ion-header>
   <ion-navbar>
     <ion-title>3R - Leitor Código </ion-title>
+    <ion-buttons end>
+      <button ion-button icon-only="" (click)="logout()">
+        <ion-icon name="log-out"></ion-icon>
+      </button>
+    </ion-buttons>
   </ion-navbar>
 </ion-header>
 
@@ -11,8 +16,6 @@
       <p>Utilize a câmara do seu celular para ler o QR Code referente ao ID do convite </p>
     </div>
   </div>
-
- 
 
   <button class="btnScanCode" large ion-button round icon-left (click)="scanCode()">
     <ion-icon name="qr-scanner"></ion-icon>
