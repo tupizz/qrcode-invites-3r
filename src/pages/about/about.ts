@@ -2,7 +2,6 @@ import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 import { Storage } from '@ionic/storage';
 
-import { DataProvider } from '../../providers/data/data';
 
 @Component({
   selector: 'page-about',
@@ -12,7 +11,7 @@ export class AboutPage {
 
   public ingressos = [];
 
-  constructor(public navCtrl: NavController, private storage:Storage, private dataProvider:DataProvider) {
+  constructor(public navCtrl: NavController, private storage:Storage) {
     this.storage.forEach(v => {this.ingressos.push(v); console.log(v)});
   }
 
@@ -20,6 +19,7 @@ export class AboutPage {
     this.ingressos = [];
     this.storage.forEach(v => {this.ingressos.push(v); console.log(v)});
   }
+
 
 }
 

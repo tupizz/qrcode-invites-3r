@@ -5,9 +5,8 @@ import { Storage } from '@ionic/storage';
 import { AlertController } from 'ionic-angular';
 
 import { LoginPage } from '../login/login';
-
+import { TabsPage } from '../tabs/tabs';
 import { AboutPage } from '../about/about';
-import { DataProvider } from '../../providers/data/data';
 import { AuthProvider } from '../../providers/auth/auth';
 
 @Component({
@@ -20,7 +19,7 @@ export class HomePage {
 
 
 
-  constructor(public app: App, public navCtrl: NavController, private dataProvider: DataProvider, private authProvider: AuthProvider, private barCodeScanner: BarcodeScanner, private storage: Storage, private alertCtrl: AlertController) {
+  constructor(public app: App, public navCtrl: NavController, private authProvider: AuthProvider, private barCodeScanner: BarcodeScanner, private storage: Storage, private alertCtrl: AlertController) {
 
   }
 
@@ -36,7 +35,7 @@ export class HomePage {
   scanCode() {
     this.barCodeScanner.scan().then(result => {
       let qrCode = result.text;
-      this.dataProvider.get(qrCode).then(ingresso => {
+      this.storage.get(qrCode).then(ingresso => {
         if (ingresso.entrou === true) {
           let alert = this.alertCtrl.create({
             title: 'Ops',
@@ -62,7 +61,12 @@ export class HomePage {
 
                   ingresso.entrou = true;
                   this.storage.set(ingresso.id, ingresso);
-                  this.navCtrl.push(AboutPage);
+                 
+                  this.navCtrl.push(TabsPage).then(() => {
+                    
+                    console.log('tabsss');
+                  });
+                  
                 }
               }
             ]
