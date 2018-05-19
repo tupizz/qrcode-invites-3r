@@ -15,9 +15,11 @@ export class AboutPage {
     this.storage.forEach(v => {this.ingressos.push(v); console.log(v)});
   }
 
-  atualizar(){
-    this.ingressos = [];
-    this.storage.forEach(v => {this.ingressos.push(v); console.log(v)});
+  atualizar(refresher){
+    setTimeout(() => {
+      this.storage.forEach(v => {this.ingressos.push(v); console.log(v)});
+      refresher.complete();
+    }, 1000);
   }
 
 

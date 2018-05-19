@@ -58,14 +58,10 @@ export class HomePage {
               {
                 text: 'Confirmar',
                 handler: () => {
-
                   ingresso.entrou = true;
                   this.storage.set(ingresso.id, ingresso);
-                 
-                  this.navCtrl.push(TabsPage).then(() => {
-                    
-                    console.log('tabsss');
-                  });
+                  //TODO implement toast
+                  this.app.getRootNav().setRoot(TabsPage);
                   
                 }
               }
@@ -77,5 +73,6 @@ export class HomePage {
 
     });
   }
+ 
 
 }

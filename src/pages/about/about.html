@@ -7,53 +7,54 @@
 </ion-header>
 
 <ion-content class="card-background-page">
-  <button ion-button full icon-left (click)="atualizar()">
-    <ion-icon name="refresh"></ion-icon>
-    Atualizar
-  </button>
-  
+  <ion-refresher (ionRefresh)="atualizar($event)">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
+
   <h1> Ingressos </h1>
-  
-  
+
+
   <ion-card *ngFor="let ingresso of ingressos">
-      <div *ngIf="ingresso.entrou===true;then entrou else naoEntrou"></div>
+    <div *ngIf="ingresso.entrou===true;then entrou else naoEntrou"></div>
 
-      <ng-template #entrou>
+    <ng-template #entrou>
 
-          <ion-item class="entrouItem">
-              
-              <ion-avatar item-start>
-                <img src="https://api.adorable.io/avatars/63/abott@adorable.png">
-              </ion-avatar>
-              <h2>{{ingresso.nome}}</h2>
-              <p>Status: Entrou na festa </p>
-              <ion-col right text-center>
-                <ion-note>
-                  11h ago
-                </ion-note>
-              </ion-col>
-            </ion-item>
+      <ion-item class="entrouItem">
 
-      </ng-template>
-      <ng-template #naoEntrou>
-        
-          <ion-item >
-              
-              <ion-avatar item-start>
-                <img src="https://api.adorable.io/avatars/63/abott@adorable.png">
-              </ion-avatar>
-              <h2>{{ingresso.nome}}</h2>
-              <p>Status: Ainda não entrou </p>
-              <ion-col right text-center>
-                <ion-note>
-                  11h ago
-                </ion-note>
-              </ion-col>
-            </ion-item>
+        <ion-avatar item-start>
+          <img src="https://api.adorable.io/avatars/63/abott@adorable.png">
+        </ion-avatar>
+        <h2>{{ingresso.nome}}</h2>
+        <p>Status: Entrou na festa </p>
+        <ion-col right text-center>
+          <ion-note>
+            11h ago
+          </ion-note>
+        </ion-col>
+      </ion-item>
 
-      </ng-template>
-          
-        
-    </ion-card>
+    </ng-template>
+    <ng-template #naoEntrou>
+
+      <ion-item>
+
+        <ion-avatar item-start>
+          <img src="https://api.adorable.io/avatars/63/abott@adorable.png">
+        </ion-avatar>
+        <h2>{{ingresso.nome}}</h2>
+        <p>Status: Ainda não entrou </p>
+        <ion-col right text-center>
+          <ion-note>
+            11h ago
+          </ion-note>
+        </ion-col>
+      </ion-item>
+
+    </ng-template>
+
+
+  </ion-card>
+
+
 
 </ion-content>
